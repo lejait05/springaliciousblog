@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1>POSTS</h1>
+<ul>
+    <li th:each="post :${posts}">
+        <p th:text="'Title: ' + ${post.title} + ' Body '  + ${post.body}"></p>
+    </li>
+</ul>
+</body>
+</html>

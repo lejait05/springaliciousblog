@@ -1,17 +1,24 @@
 package com.example.codeup.springblog;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 public class PostController {
 @GetMapping("/posts")
-    @ResponseBody
-    public String getPosts(){
-    return "Viewing all posts.......";
+//    @ResponseBody
+    public String getPosts(Model model){
+    List<Post> postList = new ArrayList<>(List.of());
+    model.addAttribute("posts",postList);
+    return "posts/index";
 }
 @GetMapping("/posts/{id}")
     @ResponseBody
@@ -29,7 +36,3 @@ public class PostController {
     return "Saving post";
 }
 }
-//GET	/posts	posts index page
-//        GET	/posts/{id}	view an individual post
-//        GET	/posts/create	view the form for creating a post
-//        POST	/posts/create	create a new post
