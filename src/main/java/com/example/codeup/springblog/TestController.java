@@ -14,10 +14,10 @@ public class TestController {
      model.addAttribute("name", name);
      return "first-view";
     }
-    @GetMapping("/needed")
-    public String returnFavoriteCity(){
-        return "needed";
-    }
-    @PostMapping("/needed")
-    public  String returnFavoriteCityResults{return "needed-results";}
+//    @GetMapping("/needed")
+//    public String returnFavoriteCity(){
+//        return "needed";
+//    }
+//    @PostMapping("/needed")
+//    public  String returnFavoriteCityResults{return "needed-results";}
 }
