@@ -2,6 +2,12 @@ package com.example.codeup.springblog;
 
 public class Product {
     private String name;
+
+    public Product(String name, int priceInCents) {
+        this.name = name;
+        this.priceInCents = priceInCents;
+    }
+
     private int priceInCents;
 
     public String getName() {
