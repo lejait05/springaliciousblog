@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Show</title>
-</head>
+<head th:replace="partials/partials.html :: head('View Post')"></head>
 <body>
-<h1 th:text="${title}"></h1>
-<p th:text="${body}"></p>
+<nav th:replace="partials/partials.html :: nav"></nav>
+<h1 th:text="${post.title}"></h1>
+<p th:text="${post.body}"></p>
 
 </body>
 </html>
