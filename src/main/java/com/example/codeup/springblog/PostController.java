@@ -20,13 +20,13 @@ new Post("The Last Straw", "One day the camel just had enough. That was the day 
     model.addAttribute("posts",postList);
     return "posts/index";
 }
-//@GetMapping("/posts/{id}")
-////    @ResponseBody
-//    public String getPost(@PathVariable long id){
-//
-//    model.addAttribute();
-//    return "Viewing post: " + id;
-//}
+@GetMapping("/posts/{id}")
+//    @ResponseBody
+    public String getPost(@PathVariable long id, Model model){
+
+    model.addAttribute("id",id);
+    return "posts/index" + id;
+}
 
 @GetMapping("/posts/create")
 //    @ResponseBody
