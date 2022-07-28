@@ -11,6 +11,18 @@ import java.util.List;
 
 @Controller
 public class PostController {
+    private final PostRepository postsDao;
+
+    public PostController(PostRepository postsDao) {
+        this.postsDao = postsDao;
+    }
+
+    @GetMapping("/posts")
+    public String index(Model model){
+        model.addAttribute("posts",postsDao.findAll());
+        return "posts/index";
+    }
+
     @GetMapping("/posts")
 //    @ResponseBody
     public String getPosts(Model model) {

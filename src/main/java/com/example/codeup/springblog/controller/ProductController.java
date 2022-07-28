@@ -11,6 +11,8 @@ import java.util.List;
 
 @Controller
 public class ProductController {
+    ProductRepository
+
     @GetMapping("/products")
     public String showAllProducts(Model model){
        List<Product> productList = new ArrayList<>(Arrays.asList(
