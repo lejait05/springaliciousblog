@@ -38,7 +38,7 @@ public class PostController {
 //    @ResponseBody
     public String getCreatePostForm() {
 
-        return "posts/create";
+        return "redirect:/posts";
     }
 
 //@PostMapping("/posts/create")
