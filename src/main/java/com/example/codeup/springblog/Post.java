@@ -1,6 +1,14 @@
 package com.example.codeup.springblog;
 
+import javax.persistence.*;
+
+@Entity
+@Table
+
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT")
     private long id;
     private String title;
     private String body;
@@ -9,6 +17,10 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Post() {
+
     }
 
     public long getId() {

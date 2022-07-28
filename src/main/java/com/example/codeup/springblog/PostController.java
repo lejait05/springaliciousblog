@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
 @Controller
 public class PostController {
     @GetMapping("/posts")
@@ -27,7 +26,9 @@ public class PostController {
 //    @ResponseBody
     public String getPost(@PathVariable long id, Model model) {
         Post post = new Post(
-                1,"Post number" + id , "Here are details about post."
+                1,
+                "Post number" + id,
+                "Here are details about post."
         );
         model.addAttribute("post", post);
         return "posts/show";

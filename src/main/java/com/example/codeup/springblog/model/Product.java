@@ -1,14 +1,27 @@
 package com.example.codeup.springblog.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT")
+    private long id;
     private String name;
+
+
+    private int priceInCents;
 
     public Product(String name, int priceInCents) {
         this.name = name;
         this.priceInCents = priceInCents;
     }
 
-    private int priceInCents;
+    public Product() {
+
+    }
 
     public String getName() {
         return name;
