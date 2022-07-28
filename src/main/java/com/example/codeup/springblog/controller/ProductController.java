@@ -1,5 +1,6 @@
 package com.example.codeup.springblog.controller;
 
+import com.example.codeup.springblog.PostRepository;
 import com.example.codeup.springblog.model.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,19 @@ import java.util.List;
 
 @Controller
 public class ProductController {
-    ProductRepository
+    private final ProductRepository productDao;
+
+public ProductController(ProductRepository productDao) {
+            this.productDao = productDao;
+        }
+
+        @GetMapping("/products")
+        public String index(Model model){
+            model.addAttribute("product",productDao.findAll());
+            return "products/index";
+        }
+
+
 
     @GetMapping("/products")
     public String showAllProducts(Model model){
@@ -20,7 +33,7 @@ public class ProductController {
                new Product("Broom", 2000),
                new Product("Mop", 500)
        ));
-       model.addAttribute("products",productList);
+       model.addAttribute("product",productList);
 return "products/index";
     }
 }
