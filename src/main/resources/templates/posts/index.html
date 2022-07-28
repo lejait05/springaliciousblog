@@ -8,7 +8,8 @@
 <h1>POSTS</h1>
 <ul>
     <li th:each="post :${posts}">
-        <p th:text="'Title: ' + ${post.title} + ' Body '  + ${post.body}"></p>
+        <p th:text="'Title: ' + ${post.title}"></p>
+        <p th:text=" ${post.body}"></p>
     </li>
 </ul>
 </body>
