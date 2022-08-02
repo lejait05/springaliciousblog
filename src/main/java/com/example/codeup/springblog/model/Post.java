@@ -1,19 +1,25 @@
-package com.example.codeup.springblog;
+package com.example.codeup.springblog.model;
+
+import org.apache.catalina.User;
 
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "post")
 
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "INT")
+//    @Column(columnDefinition = "INT")
     private long id;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 240)
     private String title;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
+
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     public Post(long id, String title, String body) {
         this.id = id;
@@ -23,6 +29,11 @@ public class Post {
 
     public Post() {
 
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
     }
 
     public long getId() {

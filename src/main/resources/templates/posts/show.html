@@ -3,8 +3,10 @@
 <head th:replace="partials/partials.html :: head('View Post')"></head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<h1 th:text="${post.title}"></h1>
+<header th:replace="partials/partials.html :: header(${post.title})"></header>
+<main class="container">
 <p th:text="${post.body}"></p>
-
+<!--    <p>The author of the post is: <span th:text="${post.user.email}"></span></p>-->
+</main>
 </body>
 </html>
