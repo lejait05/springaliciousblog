@@ -2,6 +2,7 @@ package com.example.codeup.springblog.controller;
 
 import com.example.codeup.springblog.model.Post;
 import com.example.codeup.springblog.repositories.PostRepository;
+import com.example.codeup.springblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,11 @@ import java.util.List;
 @Controller
 public class PostController {
     private final PostRepository postDao;
-
-    public PostController(PostRepository postDao) {
+    private final UserRepository userDao;
+private final EmailService emailService;
+    public PostController(PostRepository postDao, EmailService emailService) {
         this.postDao = postDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("/posts")
