@@ -9,26 +9,25 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@Controller
-//public class ProductController {
-//    private final ProductRepository productDao;
-//private final PostRepository postDao;
-//
-// public ProductController(ProductRepository productDao) {
-//            this.productDao = productDao;
-// this.postDao = postDao;
-//        }
-//
-//        @GetMapping("/products")
-//        public String showAllProducts(Model model){
-//            List<Product> productList = productDao.findAll();
-//            model.addAttribute("product",productList);
-//            return "products/index";
-//        }
+@Controller
+public class ProductController {
+    private final ProductRepository productDao;
 
 
+    public ProductController(ProductRepository productDao) {
+        this.productDao = productDao;
 
-//    @GetMapping("/products")
+    }
+
+    @GetMapping("/products")
+    public String showAllProducts(Model model) {
+        List<Product> productList = productDao.findAll();
+        model.addAttribute("product", productList);
+        return "products/index";
+    }
+
+
+    //    @GetMapping("/products")
 //    public String showAllProducts(Model model){
 //       List<Product> productList = new ArrayList<>(Arrays.asList(
 //               new Product("Hammer",1000),
@@ -38,48 +37,27 @@ import java.util.List;
 //       model.addAttribute("product",productList);
 //return "products/index";
 //    }
-//}
-@Controller
-public class ProductController {
-
-    // dependency injection
-    private ProductRepository productDao;
-    private PostRepository postDao;
-
-    public ProductController(ProductRepository productDao, PostRepository postDao) {
-        this.productDao = productDao;
-        this.postDao = postDao;
-    }
-
-    // get all records with JPA
-    @GetMapping("/products")
-    public String showAllProducts(Model vModel) {
-        List<Product> productList = productDao.findAll();
-        // pass products to view
-        vModel.addAttribute("products", productList);
-        return "products/index";
-    }
-
     @GetMapping("/products/create")
-    public String createProducts() {
+    public String showCreateForm(Model model) {
+        model.addAttribute("product", new Product());
         return "products/create";
     }
 
     @PostMapping("/products/create")
-    public String submitProduct(@RequestParam String name, @RequestParam int priceInCents) {
-        Product product = new Product(name, priceInCents);
+    public String submitProduct(@ModelAttribute Product product){
+//        Product product = new Product(name, priceInCents);
         productDao.save(product);
         return "redirect:/products";
     }
 
-    // delete a record with JPA
+
     @GetMapping("/products/delete/{id}")
     public String deleteProduct(@PathVariable long id) {
         productDao.deleteById(id);
         return "redirect:/products";
     }
 
-    // getting a specific record with JPA
+
     @GetMapping("/products/test/{id}")
     public String getProduct(@PathVariable long id) {
         Product p = productDao.findById(id).get();
@@ -110,5 +88,6 @@ public class ProductController {
     public List<String> getProductFirstName() {
         return productDao.getProductNamesNative();
     }
+
 
 }
