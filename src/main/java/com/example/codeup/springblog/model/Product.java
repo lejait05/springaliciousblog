@@ -3,16 +3,17 @@ package com.example.codeup.springblog.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT")
     private long id;
+
+@Column(length = 100, nullable = false)
     private String name;
 
-
-    private int priceInCents;
+ private int priceInCents;
 
     public Product(String name, int priceInCents) {
         this.name = name;
@@ -38,4 +39,12 @@ public class Product {
     public void setPriceInCents(int priceInCents) {
         this.priceInCents = priceInCents;
     }
+@Override
+public String toString() {
+        return "Product{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", priceInCents=" + priceInCents +
+        '}';
+        }
 }

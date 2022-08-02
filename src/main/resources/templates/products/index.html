@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All Products</title>
-</head>
+<head th:replace="partials/partials.html :: head('Here are All the Products')"></head>
 <body>
-<h1>Here are All the Products</h1>
+<main class="container">
+    <h1>Here are All the Products</h1>
 <ul>
     <li th:each="product :${products}">
        <p th:text="${product.name} + ' costs ' + ${product.priceInCents} + ' cents.'"></p>
     </li>
 </ul>
+</main>
 </body>
 </html>
