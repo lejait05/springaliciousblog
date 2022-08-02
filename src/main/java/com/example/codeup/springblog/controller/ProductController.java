@@ -22,7 +22,7 @@ public class ProductController {
     @GetMapping("/products")
     public String showAllProducts(Model model) {
         List<Product> productList = productDao.findAll();
-        model.addAttribute("product", productList);
+        model.addAttribute("products", productList);
         return "products/index";
     }
 
