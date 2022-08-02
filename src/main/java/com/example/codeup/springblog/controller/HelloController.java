@@ -16,6 +16,7 @@ public class HelloController {
     }
     @GetMapping("/join")
     public String showJoinForm() {
+
         return "join";
     }
 
