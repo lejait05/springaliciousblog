@@ -48,6 +48,7 @@ public class PostController {
 
     @GetMapping("/posts/create")
 //    @ResponseBody
+
     public String showCreatePostForm(Model model) {
 model.addAttribute("posts", new Post());
         return "posts/create";
@@ -60,4 +61,6 @@ model.addAttribute("posts", new Post());
    postDao.save(post);
     return "redirect:/posts";
 }
+//@GetMapping("/posts/{id}/edit")
+//    public String savePost()
 }
