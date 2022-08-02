@@ -5,14 +5,14 @@
 <nav th:replace="partials/partials.html :: nav"></nav>
 <header th:replace="partials/partials.html :: header('Create a Post')"></header>
 <main class="container">
-<form th:action="@{/posts/create}" th:method="POST">
+<form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
     <div class="mb-3">
     <label class="form-label" for="query">Title</label>
-    <input class="form-control" type="text" name="query" id="query" placeholder="Enter title here">
+    <input class="form-control" type="text" th:field="*{query}" id="query" placeholder="Enter title here">
     </div>
     <div class="mb-3">
     <label class="form-label" for="body">Body</label>
-    <textarea class="form-control" name="body" id="body" placeholder="Enter text here"></textarea>
+    <textarea class="form-control" th:field="*{body}" id="body" placeholder="Enter text here"></textarea>
     </div>
     <div class="d-grid">
     <button>Submit</button>
