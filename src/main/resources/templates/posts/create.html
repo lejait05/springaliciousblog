@@ -5,10 +5,10 @@
 <nav th:replace="partials/partials.html :: nav"></nav>
 <header th:replace="partials/partials.html :: header('Create a Post')"></header>
 <main class="container">
-<form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+<form th:action="@{/posts/create}" th:method="POST" th:object="${newPost}">
     <div class="mb-3">
-    <label class="form-label" for="query">Title</label>
-    <input class="form-control" type="text" th:field="*{query}" id="query" placeholder="Enter title here">
+    <label class="form-label" for="title">Title</label>
+    <input class="form-control" type="text" th:field="*{title}" id="title" placeholder="Enter title here">
     </div>
     <div class="mb-3">
     <label class="form-label" for="body">Body</label>

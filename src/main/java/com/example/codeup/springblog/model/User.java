@@ -9,13 +9,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
     private String password;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
     public User(long id, String username, String email, String password) {
@@ -23,6 +23,13 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
     }
 
     public User() {
